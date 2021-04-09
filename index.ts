@@ -103,3 +103,31 @@ const friend: Person = {
 // Note : Typescript will tell you even if you make a typo.
 // Error : Property 'namee' does not exist on type 'people'. Did you mean 'name'?
 // console.log(friend.namee);
+
+// Declaring a function inside an interface
+interface Meal {
+  name: string;
+  quantity?: number;
+  isSoldOut(): boolean;
+  soldPlaces(): string;
+}
+
+const chocolate: Meal = {
+  name: 'Kitkat',
+  isSoldOut() { return true; },
+  soldPlaces() {
+    return "Istanbul";
+  }
+}
+
+// Note : Function will also occur on autocomplete (ctrl + space)
+
+// This will return 'function isSold()'
+console.log('Is chocolate sold out ? ', chocolate.isSoldOut);
+// This will return boolean which 'true'
+console.log('Is chocolate sold out ? ', chocolate.isSoldOut());
+
+// This will return 'function soldPlaces()'
+console.log('Where has it been sold ? ', chocolate.soldPlaces);
+// This will return string which is 'Istanbul'
+console.log('Where has it been sold ? ', chocolate.soldPlaces());
