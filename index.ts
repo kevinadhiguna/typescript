@@ -33,7 +33,7 @@ getFullName('john', 'doe');
 // Error : Argument of type 'undefined[]' is not assignable to parameter of type 'string'.
 // getFullName([], True);
 
-// 3. Creating Objects
+// == 3. Creating Objects ==
 console.log("3. Creating Objects");
 
 // Typescript understands objects (data types) by default
@@ -63,3 +63,20 @@ console.log('Password is ', account2.password);
 // };
 
 // console.log('Password is ', account3.username);
+
+// == 4. Interfaces ==
+console.log("4. Interfaces");
+
+// Definition : Interface is a special entity inside Typescript which helps us to create objects with some properties.
+
+// How to create an interface
+interface User {
+  username: string;
+  password: string;
+}
+
+// How to use an interface
+const account4: User = {
+  username: 'Kai',
+  password: 'K4i'
+}
