@@ -80,3 +80,26 @@ const account4: User = {
   username: 'Kai',
   password: 'K4i'
 }
+
+interface people {
+  name: string;
+
+  // Error : Property or signature expected.
+  // age!: number;
+  
+  age: number;
+
+  // Not mandatory to include 'origin'. In other words, 'age' can be undefined.
+  origin?: string;
+  // '?' is called Optional Parameter.
+}
+
+// Not an error even though I do not include 'origin'
+const friend: people = {
+  name: 'Johnson',
+  age: 15
+}
+
+// Note : Typescript will tell you even if you make a typo.
+// Error : Property 'namee' does not exist on type 'people'. Did you mean 'name'?
+// console.log(friend.namee);
