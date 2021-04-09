@@ -81,7 +81,7 @@ const account4: User = {
   password: 'K4i'
 }
 
-interface people {
+interface Person {
   name: string;
 
   // Error : Property or signature expected.
@@ -95,7 +95,7 @@ interface people {
 }
 
 // Not an error even though I do not include 'origin'
-const friend: people = {
+const friend: Person = {
   name: 'Johnson',
   age: 15
 }
