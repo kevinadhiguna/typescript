@@ -75,3 +75,14 @@ console.log('Where has it been sold ? ', chocolate.soldPlaces);
 console.log('Where has it been sold ? ', chocolate.soldPlaces());
 // == 5. Types and Unions ==
 console.log("5. Types and Unions");
+// A property which only allows a single daa type
+var nickname = "mango";
+// To allow it having multiple data types, separate data types with a single pipe (|) :
+var pageNumber = "100";
+// Note : It is also okay to assign interface to a variable
+var user; // <- This is 'undefined'.
+// This is completely fine
+var popularMovies = ["Transformers", "Pokemon"];
+// Instead of writing code above, you can also write :
+var popularShows = ["Kamen Rider", "Power Ranger"];
+var dragonsTag = "Draco";
