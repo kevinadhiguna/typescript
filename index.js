@@ -5,3 +5,7 @@ var hello = "world";
 var hi = "World";
 console.log('Type of "hello" is ', typeof (hello));
 console.log('Type of "hi" is ', typeof (hi));
+var getFullName = function (firstname, lastname) {
+    console.log('My name is ', firstname, lastname);
+};
+getFullName('john', 'doe');
