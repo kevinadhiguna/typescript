@@ -10,8 +10,13 @@ let hi: String = "World";
 console.log('Type of "hello" is ', typeof(hello));
 console.log('Type of "hi" is ', typeof(hi));
 
-const getFullName = (firstname: string, lastname: string) => {
-  console.log('My name is ', firstname, lastname);
+// The 'string' before arrow (=>) indicates the type that this function returns.
+const getFullName = (firstname: string, lastname: string): string => {
+  // This is valid only if return type of function is 'string'.
+  return "My name is " + firstname + lastname;
+
+  // This is valid only if return type of function is 'void' or 'any'.
+  // console.log('My name is ', firstname, lastname);
 }
 
 getFullName('john', 'doe');
