@@ -181,3 +181,37 @@ const popularShows: Popular[] = ["Kamen Rider", "Power Ranger"];
 type MaybePopularTag = Popular | null; // <- Hence, it can be either string or null
 
 const dragonsTag: MaybePopularTag = "Draco";
+
+// == 6. Any never void unknown ==
+console.log("6. Any never void unknown");
+
+// 'void' in Typescript
+// Note : 'void' is a set of undefined and null
+
+// Note : assigning return value, even if it is a function, is redommended.
+const doSomething = (): void => {
+  console.log("Do Something");
+}
+
+// 'any' in Typescript
+// Note: 'any' turns off Typescript checks. It allows any data types to be assigned to a variable.
+
+let them: any = 'know'; // <- Avoid 'any' as you can, especially in a big project. It should not be more than 5.
+
+// 'never' in Typescript
+// Note: Function with 'never' can not be executed to the end.
+
+// Error : A function returning 'never' cannot have a reachable end point.
+// const saySomething = (): never => {
+//   console.log("This is never type in TS");
+// }
+
+const saySomething = (): never => {
+  throw 'never'; // ,- This will make the 'never' type declared on this function disappears.
+  console.log("This is a function with 'never' type"); // <- This line of code is never executed.
+}
+
+// 'unknown' in Typescript
+// Note: 'unknown' was introduced in typescript 3
+
+
