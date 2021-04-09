@@ -141,3 +141,43 @@ console.log('Is chocolate sold out ? ', chocolate.isSoldOut());
 console.log('Where has it been sold ? ', chocolate.soldPlaces);
 // This will return string which is 'Istanbul'
 console.log('Where has it been sold ? ', chocolate.soldPlaces());
+
+// == 5. Types and Unions ==
+console.log("5. Types and Unions");
+
+// A property which only allows a single daa type
+let nickname: string = "mango";
+
+// To allow it having multiple data types, separate data types with a single pipe (|) :
+let pageNumber: string | number = "100";
+
+interface HumanInterface {
+  id: string;
+  name: string;
+  surname: string;
+}
+
+// Note : It is also okay to assign interface to a variable
+let user: HumanInterface | null; // <- This is 'undefined'.
+
+type StudentID = string;
+
+interface StudentInterface {
+  // Type is assignable to a variable inside an interface
+  id: StudentID;
+  name: string;
+  class: string;
+}
+
+type Popular = string;
+
+// This is completely fine
+const popularMovies: string[] = ["Transformers", "Pokemon"];
+
+// Instead of writing code above, you can also write :
+const popularShows: Popular[] = ["Kamen Rider", "Power Ranger"];
+
+// Union and Type Aliases
+type MaybePopularTag = Popular | null; // <- Hence, it can be either string or null
+
+const dragonsTag: MaybePopularTag = "Draco";

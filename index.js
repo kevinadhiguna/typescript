@@ -64,6 +64,14 @@ var chocolate = {
         return "Istanbul";
     }
 };
-// Function will also occur on autocomplete (ctrl + space)
+// Note : Function will also occur on autocomplete (ctrl + space)
+// This will return 'function isSold()'
+console.log('Is chocolate sold out ? ', chocolate.isSoldOut);
+// This will return boolean which 'true'
 console.log('Is chocolate sold out ? ', chocolate.isSoldOut());
+// This will return 'function soldPlaces()'
+console.log('Where has it been sold ? ', chocolate.soldPlaces);
+// This will return string which is 'Istanbul'
 console.log('Where has it been sold ? ', chocolate.soldPlaces());
+// == 5. Types and Unions ==
+console.log("5. Types and Unions");
