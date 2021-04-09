@@ -32,3 +32,34 @@ getFullName('john', 'doe');
 
 // Error : Argument of type 'undefined[]' is not assignable to parameter of type 'string'.
 // getFullName([], True);
+
+// 3. Creating Objects
+console.log("3. Creating Objects");
+
+// Typescript understands objects (data types) by default
+
+// Case 1 : Assigning 'object' as data type
+// const account1: object = {
+//   username: 'john',
+//   password: 'John123',
+// };
+
+// Error : Property 'username' does not exist on type 'object'.
+// console.log('Account name is ', account1.username);
+
+// Case 2 : Assigning {} (object) as data type 
+const account2: {username: string, password: string} = {
+  username: 'doe',
+  password: 'Adm1n'
+};
+
+console.log('Password is ', account2.password);
+
+// Case 3 : Not including all declared variables in the object
+
+// Error : Property 'password' is missing in type '{ username: string; }' but required in type '{ username: string; password: string; }'.
+// const account3: {username: string, password: string} = {
+//   username: 'Joe',
+// };
+
+// console.log('Password is ', account3.username);
