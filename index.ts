@@ -80,18 +80,18 @@ console.log("4. Interfaces");
 // interface UserInterface { ... }
 
 // How to create an interface
-interface User {
+interface UserInterface {
   username: string;
   password: string;
 }
 
 // How to use an interface
-const account4: User = {
+const account4: UserInterface = {
   username: 'Kai',
   password: 'K4i'
 }
 
-interface Person {
+interface PersonInterface {
   name: string;
 
   // Error : Property or signature expected.
@@ -105,7 +105,7 @@ interface Person {
 }
 
 // Not an error even though I do not include 'origin'
-const friend: Person = {
+const friend: PersonInterface = {
   name: 'Johnson',
   age: 15
 }
@@ -115,14 +115,14 @@ const friend: Person = {
 // console.log(friend.namee);
 
 // Declaring a function inside an interface
-interface Meal {
+interface MealInterface {
   name: string;
   quantity?: number;
   isSoldOut(): boolean;
   soldPlaces(): string;
 }
 
-const chocolate: Meal = {
+const chocolate: MealInterface = {
   name: 'Kitkat',
   isSoldOut() { return true; },
   soldPlaces() {
