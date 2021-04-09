@@ -69,6 +69,16 @@ console.log("4. Interfaces");
 
 // Definition : Interface is a special entity inside Typescript which helps us to create objects with some properties.
 
+// Note: when creating an interface, for example, 'User', you should name it either 'IUser' or 'UserInterface' to avoid confusion with a classname.
+
+// This is the case that potentially will confuse you :
+// class User { ... }
+// interface User { ... }
+
+// This is recommended :
+// class User { ... }
+// interface UserInterface { ... }
+
 // How to create an interface
 interface User {
   username: string;
