@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // == 0. Initial ==
 console.log("== 0. Initial ==");
 console.log("Hello Typescript!");
@@ -148,3 +163,94 @@ someElement2.addEventListener('blur', function (event) {
     var target = event.target;
     console.log('event', target.value); // <- Only needs 'target.value' instead of 'event.target.value'.
 });
+// == 8. Classes in Typescript ==
+console.log("8. Classes in Typescript");
+// Note: Typescript introduces classes starting from ES6.
+// working with classes
+var Message = /** @class */ (function () {
+    function Message(prefix, postfix) {
+        this.prefix = prefix;
+        this.postfix = postfix;
+    }
+    Message.prototype.getFullmessage = function () {
+        // Use 'this' to access a property in the same class
+        return this.prefix + ' ' + this.postfix;
+    };
+    return Message;
+}());
+var message = new Message('Hello', 'Goodbye');
+// We will get every properties (in autocomplete) in Message class above since they are public. Everything is public by default.
+console.log(message.prefix);
+console.log(message.postfix);
+console.log(message.getFullmessage);
+// Private, Public, and Protected
+// Note: Private means that we can only use it inside a class
+var Msg = /** @class */ (function () {
+    function Msg(pref, postf) {
+        this.pref = pref;
+        this.postf = postf;
+    }
+    Msg.prototype.getFullmsg = function () {
+        return this.pref + ' ' + this.postf;
+    };
+    return Msg;
+}());
+var msg = new Msg('Hi', 'Bye');
+// Error : Property 'postf' is private and only accessible within class 'Msg'.
+// console.log(msg.postf);
+// Error : Property 'pref' is private and only accessible within class 'Msg'.
+// console.log(msg.pref);
+// This time, it will only show getFullmsg method as the rest of properties, pref and postf, are private. Therefore, you can only access them inside their class.
+console.log(msg.getFullmsg);
+// readonly in Typescript
+var Internet = /** @class */ (function () {
+    function Internet(ip) {
+        this.ip = ip;
+    }
+    Internet.prototype.changeInternetID = function () {
+        // Error : Cannot assign to 'id' because it is a read-only property.
+        // this.id = "bar"; // <- we are unable to change a read-only property. 
+    };
+    return Internet;
+}());
+var Animal = /** @class */ (function () {
+    function Animal() {
+    }
+    // If we comment getScientificName function below, we will get an error saying : Property 'getFullScientificName' is missing in type 'Animal' but required in type 'AnimalInterface'.
+    Animal.prototype.getFullScientificName = function () {
+        return this.name;
+    };
+    return Animal;
+}());
+var Anime = /** @class */ (function () {
+    function Anime() {
+        this.period = 5;
+    }
+    Anime.prototype.getAnimeAge = function () {
+        return this.period;
+    };
+    Anime.animeName = "doraemon";
+    return Anime;
+}());
+var anim = new Anime();
+// Only period and getAnimeAge will show up on autocomplete.
+console.log(anim.period);
+// All properties will be displayed on autocomplete.
+console.log(Anime.animeName);
+// Inheritance in Typescript
+var Admin = /** @class */ (function (_super) {
+    __extends(Admin, _super);
+    function Admin() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Admin.prototype.setEditor = function (editor) {
+        this.editor = editor;
+    };
+    Admin.prototype.getEditor = function () {
+        return this.editor;
+    };
+    return Admin;
+}(Message));
+var messageAdmin = new Admin('Foo', 'Bar');
+// 'getEditor' and 'setEditor' will also show up. 'editor' doesn't since it is private.
+console.log(messageAdmin.getEditor);

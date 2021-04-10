@@ -271,3 +271,133 @@ someElement2.addEventListener('blur', event => {
   const target = event.target as HTMLInputElement;
   console.log('event', target.value); // <- Only needs 'target.value' instead of 'event.target.value'.
 });
+
+// == 8. Classes in Typescript ==
+console.log("8. Classes in Typescript");
+
+// Note: Typescript introduces classes starting from ES6.
+
+// working with classes
+class Message {
+  prefix: string; // <- This is public.
+  // public prefix: string; // <- This is public as well but it makes no-sense as everything is public by default.
+  postfix: string;
+
+  constructor(prefix: string, postfix: string) {
+    this.prefix = prefix;
+    this.postfix = postfix;
+  }
+
+  getFullmessage(): string {
+    // Use 'this' to access a property in the same class
+    return this.prefix + ' ' + this.postfix;
+  }
+}
+
+const message = new Message('Hello', 'Goodbye');
+
+// We will get every properties (in autocomplete) in Message class above since they are public. Everything is public by default.
+console.log(message.prefix);
+console.log(message.postfix);
+console.log(message.getFullmessage);
+
+// Private, Public, and Protected
+
+// Note: Private means that we can only use it inside a class
+
+class Msg {
+  private pref: string;
+  private postf: string;
+
+  constructor (pref: string, postf: string) {
+    this.pref = pref;
+    this.postf = postf;
+  }
+
+  getFullmsg(): string {
+    return this.pref + ' ' + this.postf;
+  }
+}
+
+const msg = new Msg('Hi', 'Bye');
+
+// Error : Property 'postf' is private and only accessible within class 'Msg'.
+// console.log(msg.postf);
+
+// Error : Property 'pref' is private and only accessible within class 'Msg'.
+// console.log(msg.pref);
+
+// This time, it will only show getFullmsg method as the rest of properties, pref and postf, are private. Therefore, you can only access them inside their class.
+console.log(msg.getFullmsg);
+
+// readonly in Typescript
+class Internet {
+  ip: string;
+  readonly id: string;
+
+  constructor (ip: string) {
+    this.ip = ip;
+  }
+
+  changeInternetID(): void {
+    // Error : Cannot assign to 'id' because it is a read-only property.
+    // this.id = "bar"; // <- we are unable to change a read-only property. 
+  }
+}
+
+// implementing interfaces
+interface AnimalInterface {
+  getFullScientificName(): string;
+}
+
+class Animal implements AnimalInterface {
+  name: string;
+  
+  // If we comment getScientificName function below, we will get an error saying : Property 'getFullScientificName' is missing in type 'Animal' but required in type 'AnimalInterface'.
+  getFullScientificName(): string {
+    return this.name;
+  }
+}
+
+// static properties
+
+// Note: a static property is a property that we will get inside the class itself.
+
+interface AnimeInterface {
+  getAnimeAge(): number;
+}
+
+class Anime implements AnimeInterface {
+  period = 5;
+  static animeName = "doraemon";
+
+  getAnimeAge(): number {
+    return this.period;
+  }
+}
+
+const anim = new Anime();
+
+// Only period and getAnimeAge will show up on autocomplete.
+console.log(anim.period);
+
+// All properties will be displayed on autocomplete.
+console.log(Anime.animeName);
+
+// Inheritance in Typescript
+class Admin extends Message {
+  private editor: string;
+
+  setEditor(editor: string): void {
+    this.editor = editor;
+  }
+
+  getEditor(): string {
+    return this.editor;
+  }
+}
+
+const messageAdmin = new Admin('Foo', 'Bar');
+
+// 'getEditor' and 'setEditor' will also show up. 'editor' doesn't since it is private.
+console.log(messageAdmin.getEditor);
