@@ -401,3 +401,22 @@ const messageAdmin = new Admin('Foo', 'Bar');
 
 // 'getEditor' and 'setEditor' will also show up. 'editor' doesn't since it is private.
 console.log(messageAdmin.getEditor);
+
+// Off-topic: create an object and merge it with a random id
+
+const addId = obj => {
+  // Generate an id
+  const id = Math.random().toString(16);
+  // Merge the previous object with a new random id
+  return {
+    ...obj,
+    id
+  }
+}
+
+const learner = {
+  name: 'Steven'
+}
+
+const result = addId(learner);
+console.log('result', result); // <- This will return like : result { name: 'Steven', id: '0.cdf4294a666e' }

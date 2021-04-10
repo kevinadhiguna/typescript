@@ -13,6 +13,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 // == 0. Initial ==
 console.log("== 0. Initial ==");
 console.log("Hello Typescript!");
@@ -254,3 +265,15 @@ var Admin = /** @class */ (function (_super) {
 var messageAdmin = new Admin('Foo', 'Bar');
 // 'getEditor' and 'setEditor' will also show up. 'editor' doesn't since it is private.
 console.log(messageAdmin.getEditor);
+// Off-topic: create an object and merge it with a random id
+var addId = function (obj) {
+    // Generate an id
+    var id = Math.random().toString(16);
+    // Merge the previous object with a new random id
+    return __assign(__assign({}, obj), { id: id });
+};
+var learner = {
+    name: 'Steven'
+};
+var result = addId(learner);
+console.log('result', result); // <- This will return like : result { name: 'Steven', id: '0.cdf4294a666e' }
