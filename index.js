@@ -277,3 +277,33 @@ var learner = {
 };
 var result = addId(learner);
 console.log('result', result); // <- This will return like : result { name: 'Steven', id: '0.cdf4294a666e' }
+// == 9. Enum in Typescript ==
+console.log("9. Enum in Typescript");
+// const statuses = {
+//   notSrated: 0,
+//   inProgress: 1,
+//   done: 2
+// }
+// console.log(statuses.inProgress); // <- This will return 1
+// Enum's name and its properties start with a capital letter (naming convention : add 'Enum' as a Prefix or a Postfix)
+var StatusEnum;
+(function (StatusEnum) {
+    StatusEnum[StatusEnum["NotStarted"] = 0] = "NotStarted";
+    StatusEnum[StatusEnum["InProgress"] = 1] = "InProgress";
+    StatusEnum[StatusEnum["Done"] = 2] = "Done";
+})(StatusEnum || (StatusEnum = {}));
+console.log(StatusEnum.InProgress); // <- This will return 1 as well.
+// Note: main benefit of using Enum is : we can use enum as a vlue and a data type
+var notStartedStatus = StatusEnum.NotStarted; // <- the data type of notStartedStatus is status. Hover it so, you can see : 'let notStartedStatus: Status'
+// Error : Type '"foo"' is not assignable to type 'Status'.
+// notStartedStatus = "foo";
+// This is valid
+notStartedStatus = StatusEnum.Done;
+// This is how to assign values to enum. Values are with "=" sign (Be careful!).
+var StateEnum;
+(function (StateEnum) {
+    StateEnum["NotBegin"] = "not Begin";
+    StateEnum["InProgress"] = "in progress";
+    StateEnum["Done"] = "done";
+})(StateEnum || (StateEnum = {}));
+console.log(StateEnum.NotBegin); // <- This will return 'not begin'.
