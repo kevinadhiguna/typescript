@@ -109,3 +109,22 @@ var saySomething = function () {
 };
 // 'unknown' in Typescript
 // Note: 'unknown' was introduced in typescript 3
+// At the beginning 'any' and 'unknown' look the exactly same.
+var vAny = 10;
+var vUnknown = 10;
+// This will work because of 'any' type
+var s1 = vAny;
+// Error : Type 'unknown' is not assignable to type 'string'.
+// let s2: string = vUnknown; // <- we can't directly assign 'unknown' in other type.
+console.log(vAny.foo()); // <- Typescript doesn't care because its data type is 'any'.
+// Error : Property 'foo' does not exist on type 'unknown'.
+// console.log(vUnknown.foo());
+// Short Conclusion : we need to convert data type from 'unknown' to another data type.
+// Here comes Type Assertion : converting one type to another.
+// First we convert 'unknown' type to 'string'. Then assign 'string' type to s2.
+var s2 = vUnknown; // 'as' operator makes type assertion.
+var paginationNumber = "1";
+// Error : Conversion of type 'string' to type 'number' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+// let numericPaginationNumber: number = paginationNumber as number;
+// So, we need to convert paginationNumber to 'unknown' first. Then convert it to 'number'.
+var numericPaginationNumber = paginationNumber;
