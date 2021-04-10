@@ -128,3 +128,23 @@ var paginationNumber = "1";
 // let numericPaginationNumber: number = paginationNumber as number;
 // So, we need to convert paginationNumber to 'unknown' first. Then convert it to 'number'.
 var numericPaginationNumber = paginationNumber;
+// == 7. Working with DOM ==
+console.log("7. Working with DOM");
+// Case 1 :
+var someElement = document.querySelector('.foo'); // <- someElement is considered as an 'Element'.
+// Error : Property 'value' does not exist on type 'Element'.
+// console.log('someElement', someElement.value);
+// Common Fix (Incorrect way but a well-known fix) :
+console.log('someElement', someElement.value); // <- This is BAD since we just disabled Typescript check by converting the someElements from 'Element' to 'any'. Thus, 'any' will disable Typescript check.
+// Case 2 :
+var someElement2 = document.querySelector('.foo'); // <- someElement2 is considered as an 'HTMLInputElement'.
+// Not an error since someElement2 is an HTMLInputElement and HTMLInputElement has property '.value'. 
+console.log('someElement2', someElement2.value);
+// Adding a Listener
+someElement2.addEventListener('blur', function (event) {
+    // Error : Property 'value' does not exist on type 'EventTarget'.
+    // console.log('event', event.target.value);
+    // Tell Typescript that target is an HTMLInputElement. Hence, target will have property '.value'.
+    var target = event.target;
+    console.log('event', target.value); // <- Only needs 'target.value' instead of 'event.target.value'.
+});
