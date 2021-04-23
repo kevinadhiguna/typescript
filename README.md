@@ -11,3 +11,5 @@ Learn Typescript
 6. Make a change or refactor the code
 7. Compile Typescript to Javascript : `yarn tsc` (this command does not come by default, please look `package.json` to understand more)
 8. Open `index.html` in your browser and open console to see what Typescript does
+
+[![Visits Badge](https://badges.pufler.dev/visits/kevinadhiguna/typescript)](https://github.com/kevinadhiguna)
